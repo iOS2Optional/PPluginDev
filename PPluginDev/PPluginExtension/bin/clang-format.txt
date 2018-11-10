@@ -1,0 +1,25 @@
+BasedOnStyle: LLVM
+
+# 不限定每行代码的最大长度
+ColumnLimit: 0
+
+# 不自动清除代码中的空行
+MaxEmptyLinesToKeep: 5
+
+# 按照LLVM Style调整{}的位置即可
+
+# LLVM Style对C++的命名空间不缩进
+
+# 对C++的可见性关键字（public、protected和private）不缩进
+AccessModifierOffset: -4
+
+# 缩进统一使用4个空格代替制表符（Tab）
+UseTab: Never
+IndentWidth: 4
+
+# 在@property后加空格
+ObjCSpaceAfterProperty: true
+# ObjCSpaceAfterProperty: false
+
+
+Language: ObjC
