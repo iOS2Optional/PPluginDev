@@ -105,8 +105,8 @@
 
 
 @property(nonatomic, copy)NSString* name70;
-@property (nonatomic, copy) NSString *name71;
-@property (nonatomic, copy) NSString *name72;
+@property(nonatomic, copy) NSString *name71;
+@property(nonatomic, copy) NSString *name72;
 @property(nonatomic, copy)NSString* name73;
 
 

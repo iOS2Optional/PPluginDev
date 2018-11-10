@@ -38,7 +38,7 @@
     
     // 寻找第一行
     NSInteger fLine = startLine;
-    for (NSInteger i=(fLine-1); i>=0; i++) {
+    for (NSInteger i=(fLine-1); i>=0; i--) {
         NSString* lineString = invocation.buffer.lines[i];
         if (!lineString.blankString) {
             startLine = i+1;
@@ -88,8 +88,8 @@
     // 拼接 cmd
     NSString* linesCmdString = [NSString
                                 stringWithFormat:@"-lines=%tu:%tu",
-                                selectedLineRange.location + 1,                  // 1-based
-                                selectedLineRange.location + selectedLineRange.length];  // 1-based;
+                                startLine + 1, // 1-based
+                                endLine + 1];  // 1-based;
     NSString* cmdString = [NSString stringWithFormat:@"%@ %@ %@", executablePath, linesCmdString, tmpFileName];
     
     // 格式化文本
@@ -134,9 +134,20 @@
             
             // 删除
             [invocation.buffer.lines removeObjectsInRange:selectedLineRange];
-            
             // 添加
             [invocation.buffer.lines insertObject:strM atIndex:startLine];
+            
+            
+            // 修改后的行数
+            NSMutableArray* lineM = [strM componentsSeparatedByString:@"\n"].mutableCopy;
+            // 删除最后一个
+            [lineM removeLastObject];
+            NSString* lastLineString = lineM.firstObject;
+            NSInteger lines = lineM.count;
+            
+            // 选中所有的行
+            [invocation.buffer.selections addObject:[[XCSourceTextRange alloc] initWithStart:XCSourceTextPositionMake(startLine, 0) end:XCSourceTextPositionMake(startLine+lines-1, lastLineString.length)]];
+            
         }
         
     }
