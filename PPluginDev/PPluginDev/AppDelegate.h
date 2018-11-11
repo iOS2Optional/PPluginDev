@@ -14,18 +14,7 @@
 
 
 
-
-
-@property(nonatomic, copy)NSString* name1;
-
-
-
-
-
-
-
-
-
+@property (nonatomic, copy) NSString *name1;
 
 
 
@@ -35,6 +24,12 @@
 
 
 @property(nonatomic, copy)NSString* name2;
+
+
+
+
+
+
 
 
 
@@ -87,6 +82,10 @@
 
 
 
+
+
+
+
 @property(nonatomic, copy)NSString* name6;
 @property(nonatomic, copy)NSString* name61;
 
@@ -104,9 +103,13 @@
 
 
 
+
+
+
+
 @property(nonatomic, copy)NSString* name70;
-@property(nonatomic, copy) NSString *name71;
-@property(nonatomic, copy) NSString *name72;
+@property (nonatomic, copy) NSString *name71;
+@property (nonatomic, copy) NSString *name72;
 @property(nonatomic, copy)NSString* name73;
 
 

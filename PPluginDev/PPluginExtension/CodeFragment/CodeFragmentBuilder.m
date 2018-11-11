@@ -142,11 +142,21 @@
             NSMutableArray* lineM = [strM componentsSeparatedByString:@"\n"].mutableCopy;
             // 删除最后一个
             [lineM removeLastObject];
-            NSString* lastLineString = lineM.firstObject;
+            NSString* lastLineString = lineM.lastObject;
             NSInteger lines = lineM.count;
             
+            // 如果最后一行的长度为0的话, 最后一行选中没有效果, 所以跳到下一行
+            NSInteger marginLine = lastLineString.length==0?0:1;
+            
+            
             // 选中所有的行
-            [invocation.buffer.selections addObject:[[XCSourceTextRange alloc] initWithStart:XCSourceTextPositionMake(startLine, 0) end:XCSourceTextPositionMake(startLine+lines-1, lastLineString.length)]];
+            [invocation.buffer.selections addObject:[[XCSourceTextRange alloc] initWithStart:XCSourceTextPositionMake(startLine, 0) end:XCSourceTextPositionMake(startLine+lines-marginLine, lastLineString.length)]];
+            
+            
+            NSString* strrrrr = [NSString stringWithFormat:@"%zd - %zd - %zd ---- %@", startLine, startLine+lines - 0, lastLineString.length, lastLineString];
+            
+            tmpDir123 = [tmpDir123 stringByAppendingString:@"4"];
+            [strrrrr writeToFile:tmpDir123 atomically:YES encoding:NSUTF8StringEncoding error:nil];
             
         }
         
